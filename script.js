@@ -1,19 +1,29 @@
 (() => {
-  let xylophone = document.querySelector(".contenedor");
+  let xylophone = document.querySelectorAll(".note");
 
-  xylophone.addEventListener("click", (e) => {
-    let sound = new Audio(`sound/${e.target.id}.mp3`);
-    const tocar = (sounds) => {
-      sounds.pause();
-      sounds.currentTime = 0;
-      sounds.play();
-      e.target.classList.add("sombra");
+  const soundKey = {
+    C: new Audio(`sound/C.mp3`),
+    D: new Audio(`sound/D.mp3`),
+    E: new Audio(`sound/E.mp3`),
+    F: new Audio(`sound/F.mp3`),
+    G: new Audio(`sound/G.mp3`),
+    A: new Audio(`sound/A.mp3`),
+    B: new Audio(`sound/B.mp3`),
+    C2: new Audio(`sound/C2.mp3`),
+  };
+
+  xylophone.forEach((notes) =>
+    notes.addEventListener("click", () => {
+      const tocar = (sounds) => {
+        sounds.pause();
+        sounds.currentTime = 0;
+        sounds.play();
+      };
+      tocar(soundKey[notes.id]);
+      notes.classList.add("sombra");
       setTimeout(() => {
-        e.target.classList.remove("sombra");
+        notes.classList.remove("sombra");
       }, 300);
-    };
-    if (e.target.classList.contains("note")) {
-      tocar(sound);
-    }
-  });
+    })
+  );
 })();
