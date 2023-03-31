@@ -1,5 +1,5 @@
 (() => {
-  let xylophone = document.querySelectorAll(".note");
+  let xylophone = document.querySelector(".contenedor");
 
   const soundKey = {
     C: new Audio(`sound/C.mp3`),
@@ -11,19 +11,24 @@
     B: new Audio(`sound/B.mp3`),
     C2: new Audio(`sound/C2.mp3`),
   };
+  const tocar = (e) => {
+    let sound = soundKey[e.target.id];
+    sound.pause();
+    sound.currentTime = 0;
+    sound.play();
+    e.target.classList.add("sombra");
+    setTimeout(() => {
+      e.target.classList.remove("sombra");
+    }, 250);
+  };
 
-  xylophone.forEach((notes) =>
-    notes.addEventListener("click", () => {
-      const tocar = (sounds) => {
-        sounds.pause();
-        sounds.currentTime = 0;
-        sounds.play();
-      };
-      tocar(soundKey[notes.id]);
-      notes.classList.add("sombra");
-      setTimeout(() => {
-        notes.classList.remove("sombra");
-      }, 300);
-    })
-  );
+  const metallophone = (evento) => {
+    xylophone.addEventListener(evento, (e) => {
+      if (e.target.classList.contains("note")) {
+        tocar(e);
+      }
+    });
+  };
+  /* preguntamos si existe el evento "ontouchstart" */
+  "ontouchstart" in window ? metallophone("touchstart") : metallophone("click");
 })();
