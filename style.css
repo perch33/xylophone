@@ -1,0 +1,104 @@
+body {
+  box-sizing: border-box;
+}
+
+.contenedor {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+.note {
+  width: 10%;
+  border-radius: 20px;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: Helvetica, Arial, Sans-Serif;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.note:nth-child(1) {
+  background: #02b65e;
+  height: 90%;
+}
+
+.note:nth-child(2) {
+  background: #f0d20e;
+  height: 80%;
+}
+
+.note:nth-child(3) {
+  background: #d04559;
+  height: 70%;
+}
+
+.note:nth-child(4) {
+  background: #e28c12;
+  height: 60%;
+}
+
+.note:nth-child(5) {
+  background: #8e83c8;
+  height: 50%;
+}
+
+.note:nth-child(6) {
+  background: #0285d4;
+  height: 40%;
+}
+
+.note:nth-child(7) {
+  background: #fdc1c0;
+  height: 30%;
+}
+
+.note:nth-child(8) {
+  background: #be3c22;
+  height: 20%;
+}
+
+.white_bold {
+  font-family: Helvetica, Arial, Sans-Serif;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  user-select: none;
+}
+
+.sombra {
+  box-shadow: 0px 0px 10px black;
+}
+
+@media screen and (max-width: 769px) {
+  .contenedor {
+    width: 90%;
+    transform: rotate(270deg);
+    height: 70vh;
+  }
+  .note {
+    margin: 0 15px;
+    padding: 10px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .contenedor {
+    height: 45vh;
+    width: 60%;
+  }
+  .note {
+    margin: 0 15px;
+    padding: 13px;
+  }
+}
